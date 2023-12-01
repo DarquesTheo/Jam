@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4rutvctlcjkg"]
 
-[ext_resource type="PackedScene" uid="uid://ktom0bynvokl" path="res://Player.tscn" id="1_ckv04"]
+[ext_resource type="PackedScene" uid="uid://ktom0bynvokl" path="res://Player/Player.tscn" id="1_ckv04"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p71bk"]
 
