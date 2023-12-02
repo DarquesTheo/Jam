@@ -8,7 +8,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var neck := $Neck3
 @onready var camera := $Neck3/Camera3D
 @onready var hit_rect := $UI/HitRect
-@onready var flashlight := $Neck3/Camera3D/ak/Flashlight
 @onready var gun_camera := $Neck3/Camera3D/SubViewportContainer/SubViewport/GunCam
 
 #GUN
@@ -74,7 +73,7 @@ func _physics_process(delta):
 	
 	RenderingServer.global_shader_parameter_set("player_pos", position)
 
-func _process(delta):
+func _process(_delta):
 	gun_camera.global_transform = camera.global_transform
 	if (health == 0):
 		print("t mort batard")
