@@ -24,7 +24,7 @@ const MIN_MAP_SCALE = 0.01
 
 @onready var spawns = $Spawns
 @onready var navigation_region = $NavigationRegion3D
-var zombie = load("res://terrain/terrain.tscn")
+var zombie = load("res://Enemy/enemy_1.tscn")
 var instance
 
 func _ready():
