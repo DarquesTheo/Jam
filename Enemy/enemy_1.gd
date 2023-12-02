@@ -3,8 +3,8 @@ extends CharacterBody3D
 var player = null
 var state_machine
 
-const SPEED = 4.0
-const ATTACK_RANGE = 2.5
+const SPEED = 5.5
+const ATTACK_RANGE = 2.0
 const ATTACK_DAMAGE = 10
 
 @export var player_path : NodePath
@@ -45,6 +45,6 @@ func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
 func _hit_finished():
-	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
+	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 2.0:
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir, ATTACK_DAMAGE)
