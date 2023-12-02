@@ -2,7 +2,7 @@ shader_type spatial;
 
 uniform vec4 _color : source_color;
 uniform float sphere_size = 3.0;
-uniform vec3 player_pos;
+global uniform vec3 player_pos;
 
 varying vec3 world_vertex;
 

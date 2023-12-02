@@ -72,6 +72,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()
+	
+	RenderingServer.global_shader_parameter_set("player_pos", position)
 
 func _ready():
 	hit_rect.visible = false
