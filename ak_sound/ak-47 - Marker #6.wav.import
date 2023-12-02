@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgsapshj0jryk"
+path="res://.godot/imported/ak-47 - Marker #6.wav-460ae50dbba56b5183cf1ff1007a6dbb.sample"
+
+[deps]
+
+source_file="res://ak_sound/ak-47 - Marker #6.wav"
+dest_files=["res://.godot/imported/ak-47 - Marker #6.wav-460ae50dbba56b5183cf1ff1007a6dbb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

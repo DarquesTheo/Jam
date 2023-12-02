@@ -1,6 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://bl6wxsvnvh6e8"]
+[gd_scene load_steps=43 format=3 uid="uid://bl6wxsvnvh6e8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bqnmsmxd4kr7d" path="res://Weapon/better_ak.obj" id="1_6jgf7"]
+[ext_resource type="AudioStream" uid="uid://5qtciegapyt4" path="res://ak_sound/ak-47 - Marker #1.wav" id="1_pko32"]
+[ext_resource type="AudioStream" uid="uid://bt5hspnsj67wt" path="res://ak_sound/ak-47 - Marker #26.wav" id="2_68suj"]
 [ext_resource type="Texture2D" uid="uid://ctfdyb53qaax4" path="res://Weapon/ak_texture.png" id="2_y75o5"]
 
 [sub_resource type="Animation" id="Animation_o66n6"]
@@ -19,6 +21,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0.317, -0.577, -1.118), Vector3(0.317, -0.577, -1.07), Vector3(0.317, -0.577, -1.118)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1_pko32")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_68suj")
+}],
+"times": PackedFloat32Array(0, 0.06)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twe4d"]
 _data = {
@@ -200,3 +221,5 @@ spot_range = 8.0
 spot_attenuation = 1.23
 spot_angle = 20.0
 spot_angle_attenuation = 1.74
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -25,6 +25,7 @@ var health : int = 100
 var armor : int = 0
 var walk_speed : float = 4.5
 var run_speed_amplifier : float = 1.45
+var shooting : bool = false
 
 #signal
 signal player_hit 
@@ -32,15 +33,6 @@ signal player_hit
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-		if Input.is_action_pressed("shoot"):
-			if !gun_anim.is_playing():
-				gun_anim.play("shoot_ak")
-				instance = bullet.instantiate()
-				instance.position = gun_barrel.global_position
-				instance.transform.basis = gun_barrel.global_transform.basis
-				get_parent().add_child(instance)
-
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 #camera rotation
@@ -49,6 +41,12 @@ func _unhandled_input(event):
 			neck.rotate_y(-event.relative.x * 0.005)
 			camera.rotate_x(-event.relative.y * 0.005)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		shooting = true
+	if event.is_action_released("shoot"):
+		shooting = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -80,6 +78,13 @@ func _process(delta):
 	gun_camera.global_transform = camera.global_transform
 	if (health == 0):
 		print("t mort batard")
+	if shooting == true:
+		if !gun_anim.is_playing():
+			gun_anim.play("shoot_ak")
+			instance = bullet.instantiate()
+			instance.position = gun_barrel.global_position
+			instance.transform.basis = gun_barrel.global_transform.basis
+			get_parent().add_child(instance)
 
 func _ready():
 	hit_rect.visible = false
