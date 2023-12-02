@@ -23,10 +23,12 @@ mesh = SubResource("CapsuleMesh_qkg8f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck3"]
+cull_mask = 1048573
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck3/Camera3D"]
 
 [node name="ak" parent="Neck3/Camera3D" instance=ExtResource("2_snvgx")]
+layers = 2
 
 [node name="Flashlight" type="SpotLight3D" parent="Neck3/Camera3D/ak"]
 transform = Transform3D(3.33333, 0, 0, 0, 2.87356, 0, 0, 0, 3.33333, 0, 0, -0.057523)
@@ -43,9 +45,26 @@ spot_angle_attenuation = 1.7411
 
 [node name="playerLight" type="SpotLight3D" parent="Neck3/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.182547)
+layers = 2
 light_energy = 1.2
 spot_range = 1.35
 spot_angle = 35.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Neck3/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Neck3/Camera3D/SubViewportContainer"]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="GunCam" type="Camera3D" parent="Neck3/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237203, 0)
+cull_mask = 1047554
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -61,7 +80,7 @@ layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 651.0
 mouse_filter = 1
-color = Color(1, 0, 0, 0.705882)
+color = Color(1, 0, 0, 0.0784314)
 
 [node name="Reticle" type="CenterContainer" parent="UI"]
 visible = false
