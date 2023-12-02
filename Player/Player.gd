@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const JUMP_VELOCITY = 3.5
-const HIT_STAGGER = 6.0
+const HIT_STAGGER = 4.0
 
 #Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -9,6 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera := $Neck3/Camera3D
 @onready var hit_rect := $UI/HitRect
 @onready var flashlight := $Neck3/Camera3D/ak/Flashlight
+@onready var gun_camera := $Neck3/Camera3D/SubViewportContainer/SubViewport/GunCam
 
 #GUN
 @onready var gun_anim = $Neck3/Camera3D/ak/AnimationPlayer
@@ -45,8 +46,8 @@ func _unhandled_input(event):
 #camera rotation
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
-			neck.rotate_y(-event.relative.x * 0.01)
-			camera.rotate_x(-event.relative.y * 0.01)
+			neck.rotate_y(-event.relative.x * 0.005)
+			camera.rotate_x(-event.relative.y * 0.005)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50), deg_to_rad(60))
 
 func _physics_process(delta):
@@ -75,6 +76,11 @@ func _physics_process(delta):
 	
 	RenderingServer.global_shader_parameter_set("player_pos", position)
 
+func _process(delta):
+	gun_camera.global_transform = camera.global_transform
+	if (health == 0):
+		print("t mort batard")
+
 func _ready():
 	hit_rect.visible = false
 	randomize()
@@ -91,10 +97,10 @@ func hit(dir, attack_dmg: int):
 	#deal dmg to player
 	take_dmg(attack_dmg)
 	
+	#do the knockback
+	velocity += dir * HIT_STAGGER
+	
 	#put the screen in red
 	hit_rect.visible = true
 	await get_tree().create_timer(0.2).timeout
 	hit_rect.visible = false
-	
-	#do the knockback
-	velocity += dir * HIT_STAGGER
