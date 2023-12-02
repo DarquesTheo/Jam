@@ -1,17 +1,23 @@
 extends CharacterBody3D
 
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 3.5
+const HIT_STAGGER = 6.0
 
 #Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var neck := $Neck3
 @onready var camera := $Neck3/Camera3D
+@onready var hit_rect := $UI/HitRect
 
+#player statzs
 var max_health : int = 100
 var health : int = 100
 var armor : int = 0
-var walk_speed : float = 5.0
-var run_speed_amplifier : float = 1.2
+var walk_speed : float = 4.5
+var run_speed_amplifier : float = 1.45
+
+#signal
+signal player_hit 
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -49,4 +55,24 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _ready():
+	hit_rect.visible = false
 	pass
+	
+func take_dmg(amount : int):
+	health -= amount
+	health = max(0, health)
+
+#called when the player is hit
+func hit(dir, attack_dmg: int):
+	emit_signal("player_hit")
+	
+	#deal dmg to player
+	take_dmg(attack_dmg)
+	
+	#put the screen in red
+	hit_rect.visible = true
+	await get_tree().create_timer(0.2).timeout
+	hit_rect.visible = false
+	
+	#do the knockback
+	velocity += dir * HIT_STAGGER
