@@ -28,11 +28,10 @@ cull_mask = 1048573
 [node name="RayCast3D" type="RayCast3D" parent="Neck3/Camera3D"]
 
 [node name="playerLight" type="SpotLight3D" parent="Neck3/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.182547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0791379, -0.0446202, 0.279393)
 layers = 2
-light_energy = 1.2
-spot_range = 1.35
-spot_angle = 35.0
+spot_range = 2.0
+spot_angle = 30.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Neck3/Camera3D"]
 anchors_preset = 15
