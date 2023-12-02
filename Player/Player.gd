@@ -1,17 +1,17 @@
 extends CharacterBody3D
 
 const JUMP_VELOCITY = 4.5
-var entitystats = EntitiesStats.new()
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-@onready var neck := $Neck
-@onready var camera := $Neck/Camera3D
 
-func create_player_stats():
-	entitystats.set_max_health(100)
-	entitystats.set_health(100)
-	entitystats.set_armor(0)
-	entitystats.set_speed(5)
+#Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var neck := $Neck3
+@onready var camera := $Neck3/Camera3D
+
+var max_health : int = 100
+var health : int = 100
+var armor : int = 0
+var walk_speed : float = 5.0
+var run_speed_amplifier : float = 1.2
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -37,14 +37,16 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var speed = walk_speed
+	if Input.is_action_pressed("sprint"):
+		speed *= run_speed_amplifier
 	if direction:
-		velocity.x = direction.x * entitystats.speed
-		velocity.z = direction.z * entitystats.speed
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, entitystats.speed)
-		velocity.z = move_toward(velocity.z, 0, entitystats.speed)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()
 
 func _ready():
-	create_player_stats()
-	print(entitystats.get_health())
+	pass

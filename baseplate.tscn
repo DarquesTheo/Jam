@@ -18,5 +18,5 @@ mesh = SubResource("PlaneMesh_p71bk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ehr5")
 
-[node name="Player" parent="." instance=ExtResource("1_ckv04")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90709, 0)
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ckv04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19227, 0)
