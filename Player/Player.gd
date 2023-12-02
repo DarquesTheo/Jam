@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var neck := $Neck3
 @onready var camera := $Neck3/Camera3D
 @onready var hit_rect := $UI/HitRect
+@onready var flashlight := $Neck3/Camera3D/ak/Flashlight
 
 #GUN
 @onready var gun_anim = $Neck3/Camera3D/ak/AnimationPlayer
@@ -41,11 +42,12 @@ func _unhandled_input(event):
 
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#camera rotation
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(60))
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50), deg_to_rad(60))
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -73,12 +75,13 @@ func _physics_process(delta):
 
 func _ready():
 	hit_rect.visible = false
+	randomize()
 	pass
 	
 func take_dmg(amount : int):
 	health -= amount
 	health = max(0, health)
-
+	
 #called when the player is hit
 func hit(dir, attack_dmg: int):
 	emit_signal("player_hit")

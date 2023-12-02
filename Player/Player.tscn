@@ -20,14 +20,32 @@ shape = SubResource("ConvexPolygonShape3D_6wklf")
 mesh = SubResource("CapsuleMesh_qkg8f")
 
 [node name="Neck3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497717, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1329)
 
 [node name="RayCast3D" type="RayCast3D" parent="Neck3/Camera3D"]
 
 [node name="ak" parent="Neck3/Camera3D" instance=ExtResource("2_snvgx")]
+
+[node name="Flashlight" type="SpotLight3D" parent="Neck3/Camera3D/ak"]
+transform = Transform3D(3.33333, 0, 0, 0, 2.87356, 0, 0, 0, 3.33333, 0, 0, -0.057523)
+light_color = Color(1, 0.941176, 0.588235, 1)
+light_energy = 3.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 2.0
+light_specular = 1.0
+distance_fade_enabled = true
+spot_range = 8.0
+spot_attenuation = 1.23114
+spot_angle = 20.0
+spot_angle_attenuation = 1.7411
+
+[node name="playerLight" type="SpotLight3D" parent="Neck3/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.182547)
+light_energy = 1.2
+spot_range = 1.35
+spot_angle = 35.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -46,6 +64,7 @@ mouse_filter = 1
 color = Color(1, 0, 0, 0.705882)
 
 [node name="Reticle" type="CenterContainer" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
