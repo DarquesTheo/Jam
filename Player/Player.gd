@@ -12,8 +12,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var gun_camera := $Neck3/Camera3D/SubViewportContainer/SubViewport/GunCam
 
 #GUN
-@onready var gun_anim = $Neck3/Camera3D/ak/AnimationPlayer
-@onready var gun_barrel = $Neck3/Camera3D/ak/RayCast3D
+@onready var gun_anim = $Neck3/Camera3D/full_ak/AnimationPlayer
+@onready var gun_barrel = $Neck3/Camera3D/full_ak/RayCast3D
 
 #Bullets
 var bullet = load("res://Weapon/bullet.tscn")
@@ -48,7 +48,7 @@ func _unhandled_input(event):
 		if event is InputEventMouseMotion:
 			neck.rotate_y(-event.relative.x * 0.005)
 			camera.rotate_x(-event.relative.y * 0.005)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-50), deg_to_rad(60))
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
 func _physics_process(delta):
 	# Add the gravity.

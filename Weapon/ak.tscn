@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c62fvkrqk8r3j"]
 
-[ext_resource type="ArrayMesh" uid="uid://dymc8vcb5esk6" path="res://Assault Rifle/ak.obj" id="1_w5qi0"]
+[ext_resource type="ArrayMesh" uid="uid://bqnmsmxd4kr7d" path="res://Weapon/better_ak.obj" id="1_sr0tc"]
 
 [sub_resource type="Animation" id="Animation_o66n6"]
 resource_name = "shoot_ak"
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.01, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.161, -0.166, -0.56), Vector3(0.161, -0.166, -0.51), Vector3(0.161, -0.166, -0.56)]
+"values": [Vector3(0.317, -0.577, -1.118), Vector3(0.317, -0.577, -1.07), Vector3(0.317, -0.577, -1.118)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twe4d"]
@@ -25,9 +25,9 @@ _data = {
 }
 
 [node name="ak" type="MeshInstance3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.348, 0, 0, 0, 0.3, 0.161, -0.166, -0.56)
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.161, -0.166, -0.56)
 cast_shadow = 0
-mesh = ExtResource("1_w5qi0")
+mesh = ExtResource("1_sr0tc")
 skeleton = NodePath("../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
