@@ -1,37 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://d27l333sajm3f"]
+[gd_scene load_steps=3 format=3 uid="uid://bqlh13hljxcep"]
 
-[ext_resource type="Script" path="res://menu/menu.gd" id="1_yf652"]
+[ext_resource type="Script" path="res://menu/option.gd" id="1_xjqe0"]
+[ext_resource type="Texture2D" uid="uid://w5u8oe15dac3" path="res://menu/background.jpg" id="2_dv28n"]
 
-[node name="Menu" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yf652")
+script = ExtResource("1_xjqe0")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 62.0
-offset_bottom = 101.0
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1088, 608)
+texture = ExtResource("2_dv28n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Head" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.395
+anchor_right = 0.528
+anchor_bottom = 0.395
+offset_left = -96.256
+offset_top = -127.96
+offset_right = 95.744
+offset_bottom = -58.96
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Head"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Options"
+fit_content = true
+text_direction = 1
 
-[node name="view" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Body" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = -68.0
+offset_right = -192.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body"]
 layout_mode = 2
-text = "graphic"
+size_flags_vertical = 0
+theme_override_constants/separation = 25
 
-[node name="audio" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Graphism" type="Button" parent="Body/VBoxContainer"]
 layout_mode = 2
-text = "audio"
+theme_override_font_sizes/font_size = 40
+text = "Graphism"
 
-[node name="back" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Audio" type="Button" parent="Body/VBoxContainer"]
 layout_mode = 2
-text = "back"
+theme_override_font_sizes/font_size = 40
+text = "Audio"
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/view" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/audio" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/back" to="." method="_on_exit_pressed"]
+[node name="Back" type="Button" parent="Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back
+"
+
+[connection signal="pressed" from="Body/VBoxContainer/Back" to="." method="_on_back_pressed"]

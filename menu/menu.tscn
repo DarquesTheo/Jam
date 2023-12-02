@@ -1,48 +1,75 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd31wa1be4sqn"]
+[gd_scene load_steps=3 format=3 uid="uid://dl47igcsl3te2"]
 
-[ext_resource type="Script" path="res://menu/menu.gd" id="1_06n11"]
-[ext_resource type="Texture2D" uid="uid://w5u8oe15dac3" path="res://menu/background.jpg" id="2_mppys"]
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_505in"]
+[ext_resource type="Texture2D" uid="uid://w5u8oe15dac3" path="res://menu/background.jpg" id="2_jbpkm"]
 
-[node name="Menu" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_06n11")
+script = ExtResource("1_505in")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(1080, 720)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1088, 608)
+texture = ExtResource("2_jbpkm")
+
+[node name="Head" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.395
+anchor_right = 0.528
+anchor_bottom = 0.395
+offset_left = -208.256
+offset_top = -127.96
+offset_right = 207.744
+offset_bottom = -58.96
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Head"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Bakery Defender"
+fit_content = true
+text_direction = 1
+
+[node name="Body" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = 256.0
+offset_top = -68.0
+offset_right = -192.0
+offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(763, 506)
-texture = ExtResource("2_mppys")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 25
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="Body/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Play"
 
-[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Option" type="Button" parent="Body/VBoxContainer"]
 layout_mode = 2
-text = "Option"
+theme_override_font_sizes/font_size = 40
+text = "Options"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Body/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+theme_override_font_sizes/font_size = 40
+text = "Exit
+"
 
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
