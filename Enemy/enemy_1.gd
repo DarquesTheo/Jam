@@ -7,7 +7,7 @@ const SPEED = 5.5
 const ATTACK_RANGE = 2.0
 const ATTACK_DAMAGE = 10
 
-@export var player_path : NodePath
+@export var player_path := "/root/terrain/Player"
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
