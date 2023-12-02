@@ -11,7 +11,7 @@ func _on_exit_pressed():
 	get_tree().quit()
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://terrain.tscn")
+	get_tree().change_scene_to_file("res://terrain/terrain.tscn")
 
 func _on_option_pressed():
 	get_tree().change_scene_to_file("res://menu/option.tscn")

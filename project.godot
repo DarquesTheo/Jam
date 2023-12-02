@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Jam"
-run/main_scene="res://Player/Player.tscn"
+run/main_scene="res://menu/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

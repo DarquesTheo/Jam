@@ -10,6 +10,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qkg8f"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 5
 script = ExtResource("1_jy5lc")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
