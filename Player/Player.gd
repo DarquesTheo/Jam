@@ -9,6 +9,14 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera := $Neck3/Camera3D
 @onready var hit_rect := $UI/HitRect
 
+#GUN
+@onready var gun_anim = $Neck3/Camera3D/ak/AnimationPlayer
+@onready var gun_barrel = $Neck3/Camera3D/ak/RayCast3D
+
+#Bullets
+var bullet = load("res://Weapon/bullet.tscn")
+var instance
+
 #player statzs
 var max_health : int = 100
 var health : int = 100
@@ -22,6 +30,13 @@ signal player_hit
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if Input.is_action_pressed("shoot"):
+			if !gun_anim.is_playing():
+				gun_anim.play("shoot_ak")
+				instance = bullet.instantiate()
+				instance.position = gun_barrel.global_position
+				instance.transform.basis = gun_barrel.global_transform.basis
+				get_parent().add_child(instance)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

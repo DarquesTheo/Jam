@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dymc8vcb5esk6"
+path="res://.godot/imported/ak.obj-a630c7b36f613257fa4272d18a976f19.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ak.obj-a630c7b36f613257fa4272d18a976f19.mesh"]
+
+source_file="res://Assault Rifle/ak.obj"
+dest_files=["res://.godot/imported/ak.obj-a630c7b36f613257fa4272d18a976f19.mesh", "res://.godot/imported/ak.obj-a630c7b36f613257fa4272d18a976f19.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
