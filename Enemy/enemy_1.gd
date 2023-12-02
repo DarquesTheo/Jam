@@ -24,14 +24,16 @@ func _process(_delta):
 	
 	match state_machine.get_current_node():
 		"Run":
+			$run.set_stream_paused(false)
 			nav_agent.set_target_position(player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 		"Attack":
+			$run.set_stream_paused(true)
 			look_at(Vector3(player.global_position.x, player.global_position.y, player.global_position.z), Vector3.UP)
 	
-	#Conditions
+	#Conditions 
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
 	anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
