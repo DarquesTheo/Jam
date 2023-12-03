@@ -41,6 +41,7 @@ func _process(_delta):
 			anim_tree.root_motion_track = ""
 			$run.set_stream_paused(true)
 		"End":
+			$run.set_stream_paused(true)
 			queue_free()
 	
 	#Conditions
