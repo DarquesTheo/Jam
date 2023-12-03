@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.509251)
 target_position = Vector3(0, 0, -0.6)
 collide_with_areas = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="blood_particule" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.999999, -0.0014409, -0.00095152, 0.00143907, 0.999997, -0.00192182, 0.000954288, 0.00192045, 0.999998, 0.00375396, 0.00318703, 0.490759)
 material_override = SubResource("StandardMaterial3D_ivfci")
 visibility_range_fade_mode = 1
