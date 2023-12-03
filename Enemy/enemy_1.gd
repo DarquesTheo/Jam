@@ -3,10 +3,11 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var hp = 8
+var multiplier
+var attack_damage = 10
 
 const SPEED = 5.5
 const ATTACK_RANGE = 2.0
-const ATTACK_DAMAGE = 10
 
 @export var player_path := "/root/terrain/Player"
 
@@ -16,6 +17,9 @@ const ATTACK_DAMAGE = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node(player_path)
+	multiplier = get_parent().get_parent().multiplier
+	hp = hp * multiplier
+	attack_damage = attack_damage * multiplier
 	state_machine = anim_tree.get("parameters/playback")
 
 
@@ -33,10 +37,16 @@ func _process(_delta):
 		"Attack":
 			$run.set_stream_paused(true)
 			look_at(Vector3(player.global_position.x, player.global_position.y, player.global_position.z), Vector3.UP)
+		"Die":
+			anim_tree.root_motion_track = ""
+			$run.set_stream_paused(true)
+		"End":
+			queue_free()
 	
 	#Conditions
-	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	anim_tree.set("parameters/conditions/run", !_target_in_range())
+	if state_machine.get_current_node() != "Die":
+		anim_tree.set("parameters/conditions/attack", _target_in_range())
+		anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
 	anim_tree.get("parameters/playback")
 	
@@ -50,12 +60,27 @@ func _target_in_range():
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 2.0:
 		var dir = global_position.direction_to(player.global_position)
-		player.hit(dir, ATTACK_DAMAGE)
+		player.hit(dir, attack_damage)
 
 func _on_area_3d_body_part_hit(dam):
 	hp -= dam
 	if hp <= 0:
-		# à activer quand l'animation est fix
-		#anim_tree.set("parameters/conditions/die", true)
-		#await get_tree().create_timer(2.7).timeout
-		queue_free()
+		$Armature/Skeleton3D/whole_body_test/Area3D/CollisionShape3D.disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightToeBase/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightUpLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftToeBase/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftUpLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightHand/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightForeArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftHand/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftForeArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Head/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Spine2/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Spine1/Area3D/CollisionShape3D".disabled = true
+		$CollisionShape3D.disabled = true
+		player.earn_money(10 * multiplier * 2)
+		anim_tree.set("parameters/conditions/die", true)

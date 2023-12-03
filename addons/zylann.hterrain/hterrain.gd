@@ -22,10 +22,12 @@ const SHADER_CUSTOM = "Custom"
 
 const MIN_MAP_SCALE = 0.01
 
+@onready var timer = $ZombieSpawnTimer
 @onready var spawns = $Spawns
 @onready var navigation_region = $NavigationRegion3D
 var zombie = load("res://Enemy/enemy_1.tscn")
 var instance
+var multiplier = 1
 
 func _ready():
 	randomize()
@@ -36,9 +38,11 @@ func _get_random_child(parent_node):
 	
 func _on_zombie_spawn_timer_timeout():
 	var spawn_point = _get_random_child(spawns).global_position
-	instance = zombie.instantiate()
+	instance = zombie.instantiate(multiplier)
 	instance.position = spawn_point
 	navigation_region.add_child(instance)
+	multiplier = multiplier * 1.1
+	timer.wait_time = timer.wait_time * 0.8 + 1
 
 # Note, the `str()` syntax is no longer accepted in constants in Godot 4
 const _SHADER_TYPE_HINT_STRING = \

@@ -487,6 +487,7 @@ spot_angle = 21.7147
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.28, -1.8, 157.381)
 visible = false
+layers = 0
 size = Vector3(291.302, 3, 335.251)
 
 [node name="road" parent="NavigationRegion3D" instance=ExtResource("54_gp0vf")]

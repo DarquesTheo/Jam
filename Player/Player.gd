@@ -86,6 +86,9 @@ func buy_health():
 		health += 5
 		health = min(health, max_health)
 
+func earn_money(amount):
+	money += amount
+
 func buy_regen():
 	if money >= 200:
 		money -= 200
