@@ -1,7 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bbwi03f54bsdt"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://bbwi03f54bsdt"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_7yoff"]
 resource_name = "Limiter"
+ceiling_db = -0.5
 
 [sub_resource type="AudioEffectEQ" id="AudioEffectEQ_vx4kp"]
 resource_name = "EQ"
@@ -23,6 +24,12 @@ damping = 0.0
 hipass = 1.0
 wet = 0.02
 
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_2p1dj"]
+resource_name = "Limiter"
+ceiling_db = -1.3
+threshold_db = -1.1
+soft_clip_ratio = 7.9
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_7yoff")
 bus/0/effect/0/enabled = true
@@ -38,3 +45,11 @@ bus/1/effect/1/effect = SubResource("AudioEffectPanner_kgc3k")
 bus/1/effect/1/enabled = true
 bus/1/effect/2/effect = SubResource("AudioEffectReverb_l5xyk")
 bus/1/effect/2/enabled = true
+bus/2/name = &"zombie"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -1.12151
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLimiter_2p1dj")
+bus/2/effect/0/enabled = true
