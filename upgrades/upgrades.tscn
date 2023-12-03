@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxgcnbcj6ihfd"]
+
+[ext_resource type="Script" path="res://upgrades/upgrades.gd" id="1_h4uvv"]
+
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4uvv")
+
+[node name="Head" type="MarginContainer" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.37
+anchor_right = 0.5
+anchor_bottom = 0.37
+offset_left = -120.0
+offset_top = -127.76
+offset_right = 120.0
+offset_bottom = -55.76
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Head"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Upgrades"
+
+[node name="Body" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.58
+anchor_right = 0.833
+anchor_bottom = 0.58
+offset_left = -0.384018
+offset_top = -143.84
+offset_right = 0.383911
+offset_bottom = 138.16
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Damage" type="Button" parent="Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Damage"
+
+[node name="Move Speed" type="Button" parent="Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Move Speed"
+
+[node name="Health" type="Button" parent="Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Health"
+
+[node name="Regen" type="Button" parent="Body/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Regen
+"
+
+[connection signal="pressed" from="Body/VBoxContainer/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Move Speed" to="." method="_on_move_speed_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Health" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="Body/VBoxContainer/Regen" to="." method="_on_regen_pressed"]
