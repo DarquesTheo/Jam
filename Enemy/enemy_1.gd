@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
-var hp = 20
+var hp = 8
 
 const SPEED = 5.5
 const ATTACK_RANGE = 2.0
@@ -35,11 +35,8 @@ func _process(_delta):
 			look_at(Vector3(player.global_position.x, player.global_position.y, player.global_position.z), Vector3.UP)
 	
 	#Conditions
-	if hp <= 0:
-		anim_tree.set("parameters/conditions/die", true)
-	else:
-		anim_tree.set("parameters/conditions/attack", _target_in_range())
-		anim_tree.set("parameters/conditions/run", !_target_in_range())
+	anim_tree.set("parameters/conditions/attack", _target_in_range())
+	anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
 	anim_tree.get("parameters/playback")
 	
@@ -54,3 +51,11 @@ func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 2.0:
 		var dir = global_position.direction_to(player.global_position)
 		player.hit(dir, ATTACK_DAMAGE)
+
+func _on_area_3d_body_part_hit(dam):
+	hp -= dam
+	if hp <= 0:
+		# à activer quand l'animation est fix
+		#anim_tree.set("parameters/conditions/die", true)
+		#await get_tree().create_timer(2.7).timeout
+		queue_free()
