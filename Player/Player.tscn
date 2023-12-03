@@ -24,6 +24,7 @@ mesh = SubResource("CapsuleMesh_qkg8f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26993, 0)
 cull_mask = 1048573
 current = true
 
@@ -80,9 +81,12 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="HitRect" type="ColorRect" parent="UI"]
-layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 651.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 color = Color(1, 0, 0, 0.0784314)
 

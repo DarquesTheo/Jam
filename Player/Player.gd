@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const JUMP_VELOCITY = 3.5
+const JUMP_VELOCITY = 3.0
 const HIT_STAGGER = 4.0
 
 #Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,11 +23,52 @@ var max_health : int = 100
 var health : int = 100
 var armor : int = 0
 var walk_speed : float = 4.5
+var health_regen : float = 0.0
 var run_speed_amplifier : float = 1.45
+var money : int = 0
 var shooting : bool = false
 
+#camera state
+var shake_state = 0
+
 #signal
-signal player_hit 
+signal player_hit
+
+func get_max_health():
+	return max_health
+
+func het_health():
+	return health
+
+func get_armor():
+	return armor
+	
+func get_walk_speed():
+	return walk_speed
+
+func get_health_regen():
+	return health_regen
+
+func get_money():
+	return money
+
+func set_max_health(value : int):
+	max_health = value
+
+func set_health(value: int):
+	health = value
+
+func set_armor(value : int):
+	armor = value
+
+func set_walk_speed(value : float):
+	walk_speed = value
+
+func set_health_regen(value : float):
+	health_regen = value
+
+func set_money(value : int):
+	money = value
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -46,6 +87,12 @@ func _input(event):
 		shooting = true
 	if event.is_action_released("shoot"):
 		shooting = false
+		
+func shake_right():
+	neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(-3), 0.05)
+
+func shake_left():
+	neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(3), 0.05)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -60,9 +107,32 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var forward : bool = Input.is_action_pressed("move_forward")
+	var back : bool = Input.is_action_pressed("move_back")
+	var right : bool = Input.is_action_pressed("move_right")
+	var left : bool = Input.is_action_pressed("move_left")
 	var speed = walk_speed
 	if Input.is_action_pressed("sprint"):
 		speed *= run_speed_amplifier
+
+	if right:
+		speed *= 0.8
+		if not left:
+			shake_right()
+	elif left:
+		speed *= 0.8
+		shake_left()
+	else:
+		neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(0), 0.05)
+
+	if back:
+		speed = walk_speed * 0.5
+
+	if Input.is_action_pressed("shoot"):
+		speed *= 0.85
+	if !is_on_floor():
+		speed *= 0.8
+
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -75,8 +145,6 @@ func _physics_process(delta):
 
 func _process(_delta):
 	gun_camera.global_transform = camera.global_transform
-	if (health == 0):
-		print("t mort batard")
 	if shooting == true:
 		if !gun_anim.is_playing():
 			gun_anim.play("shoot_ak")
@@ -89,10 +157,15 @@ func _ready():
 	hit_rect.visible = false
 	randomize()
 	pass
-	
+
+func die():
+	pass
+
 func take_dmg(amount : int):
 	health -= amount
 	health = max(0, health)
+	if health == 0:
+		die()
 	
 #called when the player is hit
 func hit(dir, attack_dmg: int):
