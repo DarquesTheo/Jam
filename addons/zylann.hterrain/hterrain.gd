@@ -42,7 +42,7 @@ func _on_zombie_spawn_timer_timeout():
 	instance.position = spawn_point
 	navigation_region.add_child(instance)
 	multiplier = multiplier * 1.1
-	timer.wait_time = timer.wait_time * 0.8 + 1
+	timer.wait_time = timer.wait_time * 0.98 + 0.07
 
 # Note, the `str()` syntax is no longer accepted in constants in Godot 4
 const _SHADER_TYPE_HINT_STRING = \
