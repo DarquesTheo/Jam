@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
+var hp = 20
 
 const SPEED = 5.5
 const ATTACK_RANGE = 2.0
@@ -33,9 +34,12 @@ func _process(_delta):
 			$run.set_stream_paused(true)
 			look_at(Vector3(player.global_position.x, player.global_position.y, player.global_position.z), Vector3.UP)
 	
-	#Conditions 
-	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	anim_tree.set("parameters/conditions/run", !_target_in_range())
+	#Conditions
+	if hp <= 0:
+		anim_tree.set("parameters/conditions/die", true)
+	else:
+		anim_tree.set("parameters/conditions/attack", _target_in_range())
+		anim_tree.set("parameters/conditions/run", !_target_in_range())
 	
 	anim_tree.get("parameters/playback")
 	
