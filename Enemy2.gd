@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var player = null
 var state_machine
-var hp = 16
+var hp = 8
 var multiplier
 var attack_damage = 10
 
@@ -64,10 +64,24 @@ func _hit_finished():
 		player.hit(dir, attack_damage)
 
 func _on_area_3d_body_part_hit(dam):
-	hp -= dam * player.damage
+	hp -= dam
 	if hp <= 0:
-		$Armature/Skeleton3D/whole_body/Area3D/CollisionShape3D.disabled = true
-		$Armature/Skeleton3D/head/Area3D/CollisionShape3D.disabled = true
+		$Armature/Skeleton3D/whole_body_test/Area3D/CollisionShape3D.disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightToeBase/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightUpLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftToeBase/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftUpLeg/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightHand/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightForeArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_RightArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftHand/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftForeArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_LeftArm/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Head/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Spine2/Area3D/CollisionShape3D".disabled = true
+		$"Armature/Skeleton3D/Physical Bone mixamorig_Spine1/Area3D/CollisionShape3D".disabled = true
 		$CollisionShape3D.disabled = true
 		player.earn_money(10 * multiplier * 2)
 		anim_tree.set("parameters/conditions/die", true)
