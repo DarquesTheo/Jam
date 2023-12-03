@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Weapon/bullet.gd" id="1_yhnsj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1t8ai"]
-size = Vector3(0.05, 0.05, 1)
+size = Vector3(0.05, 0.05, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dcgx"]
 albedo_color = Color(1, 0.764706, 0.294118, 1)
@@ -30,17 +30,17 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_yhnsj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 2
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_1t8ai")
 surface_material_override/0 = SubResource("StandardMaterial3D_2dcgx")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.509251)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0254489)
 target_position = Vector3(0, 0, -0.6)
 collide_with_areas = true
 
 [node name="blood_particule" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.999999, -0.0014409, -0.00095152, 0.00143907, 0.999997, -0.00192182, 0.000954288, 0.00192045, 0.999998, 0.00375396, 0.00318703, 0.490759)
+transform = Transform3D(0.999999, -0.0014409, -0.00095152, 0.00143907, 0.999997, -0.00192182, 0.000954288, 0.00192045, 0.999998, 0.00375396, 0.00318703, 0.0528778)
 material_override = SubResource("StandardMaterial3D_ivfci")
 visibility_range_fade_mode = 1
 emitting = false
