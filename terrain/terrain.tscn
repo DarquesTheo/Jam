@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dqil72qdu40c5"]
+[gd_scene load_steps=56 format=3 uid="uid://pbg57ynuhuug"]
 
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_tta3d"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="2_ny78y"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cmod5kfnbhgb5" path="res://texture/daotown_building_kit_104.png" id="11_yefx0"]
 [ext_resource type="Texture2D" uid="uid://xe30vmop15em" path="res://texture/daotown_building_kit_105.jpg" id="12_vimp0"]
 [ext_resource type="Texture2D" uid="uid://3jngx1vfvu2j" path="res://texture/Cold Night Equirect.png" id="20_1ms8x"]
-[ext_resource type="PackedScene" uid="uid://bymghmrw7pxik" path="res://preset.tscn" id="25_ptlxm"]
+[ext_resource type="PackedScene" path="res://preset.tscn" id="25_ptlxm"]
 [ext_resource type="Texture2D" uid="uid://cvweqc2lmu7hw" path="res://texture/daotown_building_kit_113.jpg" id="45_tg61b"]
 [ext_resource type="PackedScene" uid="uid://dyfyqlfym5b80" path="res://HitBOX/factoryHB.tscn" id="45_y8ed8"]
 [ext_resource type="Texture2D" uid="uid://fqon8jhe4fjt" path="res://texture/daotown_building_kit_115.jpg" id="46_m08ao"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cbvlsqo7hbfnj" path="res://texture/daotown_building_kit_116.jpg" id="48_xmv4m"]
 [ext_resource type="Texture2D" uid="uid://dh428lso42j1m" path="res://texture/Asphalt027B_1K-JPG/Asphalt027B_1K-JPG_Color.jpg" id="52_6dfrg"]
 [ext_resource type="Shader" path="res://shader/skyshader.gdshader" id="53_3f1la"]
-[ext_resource type="PackedScene" uid="uid://4asmfhnbj43l" path="res://road.tscn" id="54_gp0vf"]
+[ext_resource type="PackedScene" uid="uid://udjo4fr4qoot" path="res://road.tscn" id="54_gp0vf"]
 [ext_resource type="Texture2D" uid="uid://8lk5djvlvbpb" path="res://texture/low_poly_psx_street_lamp_0.png" id="54_l0vrg"]
 [ext_resource type="Texture2D" uid="uid://cnmnytl2mhnp5" path="res://texture/low_poly_psx_street_lamp_1.png" id="55_ihery"]
 [ext_resource type="PackedScene" uid="uid://b1bxrv1bi3wo1" path="res://wall.tscn" id="56_r3ek5"]
