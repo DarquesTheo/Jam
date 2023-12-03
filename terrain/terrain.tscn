@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bactunylshm3j"]
+[gd_scene load_steps=56 format=3 uid="uid://bactunylshm3j"]
 
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_tta3d"]
 [ext_resource type="Resource" path="res://terrain/data.hterrain" id="2_ny78y"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://cmod5kfnbhgb5" path="res://texture/daotown_building_kit_104.png" id="11_yefx0"]
 [ext_resource type="Texture2D" uid="uid://xe30vmop15em" path="res://texture/daotown_building_kit_105.jpg" id="12_vimp0"]
 [ext_resource type="Texture2D" uid="uid://3jngx1vfvu2j" path="res://texture/Cold Night Equirect.png" id="20_1ms8x"]
-[ext_resource type="PackedScene" uid="uid://boebh76gcdo6k" path="res://Enemy2/Enemy2.tscn" id="25_iuplu"]
 [ext_resource type="PackedScene" uid="uid://bymghmrw7pxik" path="res://preset.tscn" id="25_ptlxm"]
 [ext_resource type="Texture2D" uid="uid://cvweqc2lmu7hw" path="res://texture/daotown_building_kit_113.jpg" id="45_tg61b"]
 [ext_resource type="PackedScene" uid="uid://dyfyqlfym5b80" path="res://HitBOX/factoryHB.tscn" id="45_y8ed8"]
@@ -496,9 +495,6 @@ size = Vector3(291.302, 3, 335.251)
 
 [node name="road" parent="NavigationRegion3D" instance=ExtResource("54_gp0vf")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 109.097, 0.1, 165.212)
-
-[node name="Enemy2" parent="NavigationRegion3D" instance=ExtResource("25_iuplu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.2229, 0, 143.534)
 
 [node name="Spawns" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1982, 0, 8.70261)

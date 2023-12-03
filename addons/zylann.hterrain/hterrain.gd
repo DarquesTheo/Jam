@@ -32,11 +32,19 @@ var multiplier = 1
 func _ready():
 	randomize()
 
+func _set_random_zombie():
+	if randi() % 3 == 0:
+		zombie = load("res://Enemy2/Enemy2.tscn")
+	else:
+		zombie = load("res://Enemy/enemy_1.tscn")
+	return zombie
+
 func _get_random_child(parent_node):
 	var random_id = randi() % parent_node.get_child_count()
 	return parent_node.get_child(random_id)
 	
 func _on_zombie_spawn_timer_timeout():
+	zombie = _set_random_zombie()
 	var spawn_point = _get_random_child(spawns).global_position
 	instance = zombie.instantiate(multiplier)
 	instance.position = spawn_point
