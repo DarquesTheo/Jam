@@ -153,7 +153,7 @@ albedo_texture = ExtResource("2_y75o5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317, -0.577, -1.118)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00105402, 0.258977, -1.77694)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.00105402, 0.243052, 0.913403)
 target_position = Vector3(0, 0, -1)
 collision_mask = 0
 
