@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ktom0bynvokl"]
+[gd_scene load_steps=6 format=3 uid="uid://ktom0bynvokl"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_jy5lc"]
 [ext_resource type="Script" path="res://Player/reticle.gd" id="2_o0h6c"]
-[ext_resource type="AudioStream" uid="uid://cjr4uh27up177" path="res://audio/bakery_defender_theme_mixed.ogg" id="4_3pvpm"]
 [ext_resource type="PackedScene" uid="uid://bl6wxsvnvh6e8" path="res://Weapon/full_ak.tscn" id="4_fretk"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6wklf"]
@@ -121,8 +120,3 @@ width = 2.0
 [node name="Left" type="Line2D" parent="UI/Reticle"]
 points = PackedVector2Array(-5, 0, -15, 0)
 width = 2.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_3pvpm")
-autoplay = true
-max_polyphony = 2
