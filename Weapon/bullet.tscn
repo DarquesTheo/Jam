@@ -12,9 +12,9 @@ emission = Color(1, 0.92549, 0, 1)
 emission_energy_multiplier = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivfci"]
-albedo_color = Color(1, 0.92549, 0, 1)
+albedo_color = Color(0.992157, 0.0862745, 0, 1)
 emission_enabled = true
-emission = Color(1, 0.92549, 0, 1)
+emission = Color(0.992157, 0.0862745, 0, 1)
 emission_energy_multiplier = 8.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mronf"]
@@ -34,12 +34,15 @@ mesh = SubResource("BoxMesh_1t8ai")
 surface_material_override/0 = SubResource("StandardMaterial3D_2dcgx")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.509251)
 target_position = Vector3(0, 0, -0.6)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.999999, -0.0014409, -0.00095152, 0.00143907, 0.999997, -0.00192182, 0.000954288, 0.00192045, 0.999998, 0.00375396, 0.00318703, -0.490295)
+transform = Transform3D(0.999999, -0.0014409, -0.00095152, 0.00143907, 0.999997, -0.00192182, 0.000954288, 0.00192045, 0.999998, 0.00375396, 0.00318703, 0.490759)
 material_override = SubResource("StandardMaterial3D_ivfci")
+visibility_range_fade_mode = 1
 emitting = false
+amount = 10
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_mronf")
