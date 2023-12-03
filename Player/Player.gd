@@ -153,10 +153,18 @@ func shake_right():
 func shake_left():
 	neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(2), 0.1)
 
+var sound_action : String = "walk"
+
+#func to apply the sound switch between run and walk
+func _reset_sound():
+	if $Neck3/walk_anim.is_playing():
+				$Neck3/walk_anim.stop(false)
+				$Neck3/walk_anim.play(sound_action)
+
 func _physics_process(_delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * _delta
+		velocity.y -= gravity * _delta  
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -172,6 +180,16 @@ func _physics_process(_delta):
 	var speed = walk_speed
 	if Input.is_action_pressed("sprint"):
 		speed *= run_speed_amplifier
+		if sound_action == "walk" && !back:
+			sound_action = "run"
+			_reset_sound()
+		if sound_action == "run" && back:
+			sound_action = "walk"
+			_reset_sound()
+	else:
+		if sound_action == "run":
+			sound_action = "walk"
+			_reset_sound()
 
 	if right:
 		speed *= 0.8
@@ -192,12 +210,15 @@ func _physics_process(_delta):
 		speed *= 0.8
 
 	if direction:
-		$walk_sound.play()
+		if !$Neck3/walk_anim.is_playing():
+			$Neck3/walk_anim.play(sound_action)
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
+		if $Neck3/walk_anim.is_playing():
+			$Neck3/walk_anim.stop(false)
 	move_and_slide()
 	
 	RenderingServer.global_shader_parameter_set("player_pos", position)

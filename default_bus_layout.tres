@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_7yoff"]
 resource_name = "Limiter"
-ceiling_db = -0.5
+ceiling_db = -1.0
 
 [sub_resource type="AudioEffectEQ" id="AudioEffectEQ_vx4kp"]
 resource_name = "EQ"
