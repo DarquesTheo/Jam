@@ -12,6 +12,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var menu := $Upgrades
 @onready var gun_viewport := $Neck3/Camera3D/SubViewportContainer
 @onready var coins_text := $Upgrades/Coins2/Coins
+@onready var ui := $UI
+@onready var hp_bar:= $UI/Hp_bar
 
 #GUN
 @onready var gun_anim = $Neck3/Camera3D/full_ak/AnimationPlayer
@@ -22,8 +24,8 @@ var bullet = load("res://Weapon/bullet.tscn")
 var instance
 
 #player statzs
-var max_health : int = 100
-var health : int = 100
+var max_health : float = 100.0
+var health : float = 100.0
 var armor : int = 0
 var walk_speed : float = 4.5
 var health_regen : float = 0.0
@@ -75,24 +77,40 @@ func set_health_regen(value : float):
 func set_money(value : int):
 	money = value
 
+func add_hp(value : float):
+	health += value
+	health = min(max_health, health)
+	update_hp_bar_value()
+
 func buy_damage():
 	if money >= 100:
 		money -= 100
 		damage += 1
+		update_coins_text()
 
 func buy_health():
 	if money >= 50:
 		money -= 50
 		health += 5
 		health = min(health, max_health)
+		update_coins_text()
 
 func earn_money(amount):
 	money += amount
+	update_coins_text()
 
 func buy_regen():
 	if money >= 200:
 		money -= 200
 		health_regen += 0.1
+		update_coins_text()
+
+func buy_max_health():
+	if money >= 100:
+		money -= 100
+		max_health += 10
+		add_hp(10)
+		update_coins_text()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -106,6 +124,12 @@ func _unhandled_input(event):
 			camera.rotate_x(-event.relative.y * 0.005)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 
+func update_coins_text():
+	coins_text.text = str(money)
+
+func update_hp_bar_value():
+	hp_bar.value = (health / max_health) * 100
+
 func _input(event):
 	if event.is_action_pressed("shoot") && in_menu == false:
 		shooting = true
@@ -115,12 +139,13 @@ func _input(event):
 		if (in_menu == true):
 			in_menu = false
 			menu.visible = false
-			gun_viewport.visible = true
+			#gun_viewport.visible = true
+			ui.visible = true
 		else:
 			in_menu = true
 			menu.visible = true
-			coins_text.text = str(money)
-			gun_viewport.visible = false
+			#gun_viewport.visible = false
+			ui.visible = false
 		
 func shake_right():
 	neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(-2), 0.1)
@@ -167,6 +192,7 @@ func _physics_process(_delta):
 		speed *= 0.8
 
 	if direction:
+		$walk_sound.play()
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
@@ -186,9 +212,12 @@ func _process(_delta):
 			instance.transform.basis = gun_barrel.global_transform.basis
 			get_parent().add_child(instance)
 	health += health_regen * _delta
+	update_hp_bar_value()
+
 func _ready():
 	hit_rect.visible = false
 	menu.visible = false
+	update_coins_text()
 	randomize()
 	pass
 
@@ -200,6 +229,7 @@ func take_dmg(amount : int):
 	health = max(0, health)
 	if health == 0:
 		die()
+	update_hp_bar_value()
 	
 #called when the player is hit
 func hit(dir, attack_dmg: int):
@@ -225,3 +255,6 @@ func _on_health_pressed():
 
 func _on_regen_pressed():
 	buy_regen()
+
+func _on_max_health_pressed():
+	buy_max_health()

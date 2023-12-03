@@ -36,6 +36,6 @@ libraries = {
 }
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0.0216022, -1.97411)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0.0216064, -1.97412)
 target_position = Vector3(0, 0, -1)
 collision_mask = 0
