@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://by0y6ik48ksf3"]
+
+[ext_resource type="Script" path="res://Enemy2/projectile.gd" id="1_kkhin"]
+[ext_resource type="PackedScene" uid="uid://xpjp3mhffa4b" path="res://Enemy2/projectile.glb" id="1_r182a"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_kkhin")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_r182a")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.05, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0254489)
+target_position = Vector3(0, 0, -0.6)
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267315, 0)
+light_color = Color(0.34902, 0.439216, 0.431373, 1)
+light_energy = 2.0
+spot_range = 3.0
+spot_angle = 180.0
