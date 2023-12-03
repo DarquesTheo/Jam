@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://bbwi03f54bsdt"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bbwi03f54bsdt"]
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_7yoff"]
+resource_name = "Limiter"
 
 [sub_resource type="AudioEffectEQ" id="AudioEffectEQ_vx4kp"]
 resource_name = "EQ"
@@ -21,6 +24,8 @@ hipass = 1.0
 wet = 0.02
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectLimiter_7yoff")
+bus/0/effect/0/enabled = true
 bus/1/name = &"shot"
 bus/1/solo = false
 bus/1/mute = false
