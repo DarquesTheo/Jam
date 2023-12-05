@@ -377,6 +377,45 @@ shape = SubResource("ConcavePolygonShape3D_41cto")
 [node name="Bakery" parent="NavigationRegion3D/batiment" instance=ExtResource("22_6hyo7")]
 transform = Transform3D(3.15955, 0, 0, 0, 3.15955, 0, 0, 0, 3.15955, 136.558, 2.02703, 156.596)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.269229, 0.397629, -0.877159, -0.116673, -0.917547, -0.380126, -0.955983, -4.67618e-08, 0.293423, 154.914, 2.31752, 176.214)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.269229, 0.397629, -0.877159, -0.116673, -0.917547, -0.380126, -0.955983, -4.67618e-08, 0.293423, 162.615, 2.46261, 176.355)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 169.353, 4.89407, 175.689)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 140.841, 3.27657, 149.661)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 131.861, 3.27657, 149.661)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 120.599, 7.98729, 150.065)
+light_color = Color(1, 1, 0.34902, 1)
+light_energy = 10.0
+light_specular = 16.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, 0.117425, -0.851088, -0.511724, -0.958767, -0.231443, 0.164922, 114.626, 7.98729, 150.065)
+light_color = Color(1, 1, 0.458824, 1)
+light_energy = 10.0
+light_specular = 16.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 114.626, 7.98729, 148.12)
+light_color = Color(1, 1, 0.376471, 1)
+light_energy = 10.0
+light_specular = 16.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="NavigationRegion3D/batiment"]
+transform = Transform3D(-0.258798, 0.471258, -0.843172, -0.138278, -0.881995, -0.450515, -0.955983, -3.89682e-08, 0.293423, 120.774, 7.98729, 148.12)
+light_color = Color(1, 1, 0.317647, 1)
+light_energy = 10.0
+light_specular = 16.0
+
 [node name="lamp" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.42816e-08, 0.326724, 1.42816e-08, 0, -1.42816e-08, 0.326724, 0.326724, 1.42816e-08, 6.24267e-16, 126.513, 0.441675, 159.575)
 
