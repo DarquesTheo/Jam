@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cy501gka02lts"]
 
-[ext_resource type="PackedScene" uid="uid://caroop2bmpr0" path="res://texture/low_poly_psx_street_lamp.glb" id="1_p7y5s"]
-[ext_resource type="Texture2D" uid="uid://8lk5djvlvbpb" path="res://texture/low_poly_psx_street_lamp_0.png" id="2_utefm"]
-[ext_resource type="Texture2D" uid="uid://cnmnytl2mhnp5" path="res://texture/low_poly_psx_street_lamp_1.png" id="3_akjkw"]
+[ext_resource type="PackedScene" uid="uid://caroop2bmpr0" path="res://terrain/texture/low_poly_psx_street_lamp.glb" id="1_p7y5s"]
+[ext_resource type="Texture2D" uid="uid://8lk5djvlvbpb" path="res://terrain/texture/low_poly_psx_street_lamp_0.png" id="2_utefm"]
+[ext_resource type="Texture2D" uid="uid://cnmnytl2mhnp5" path="res://terrain/texture/low_poly_psx_street_lamp_1.png" id="3_akjkw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84bqk"]
 resource_name = "Material.001"
