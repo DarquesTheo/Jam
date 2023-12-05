@@ -124,6 +124,7 @@ _data = {
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
+process_mode = 3
 collision_layer = 5
 script = ExtResource("1_jy5lc")
 

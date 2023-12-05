@@ -144,11 +144,13 @@ func _input(event):
 			menu.visible = false
 			#gun_viewport.visible = true
 			ui.visible = true
+			get_tree().paused = false
 		else:
 			in_menu = true
 			menu.visible = true
 			#gun_viewport.visible = false
 			ui.visible = false
+			get_tree().paused = true
 		
 func shake_right():
 	neck.rotation.z = lerp_angle(neck.rotation.z, deg_to_rad(-2), 0.1)
@@ -170,7 +172,7 @@ func _physics_process(_delta):
 		velocity.y -= gravity * _delta  
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !in_menu:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -211,6 +213,8 @@ func _physics_process(_delta):
 		speed *= 0.85
 	if !is_on_floor():
 		speed *= 0.8
+	if in_menu:
+		speed = 0
 
 	if direction && alive:
 		if !$Neck3/walk_anim.is_playing():
