@@ -124,6 +124,7 @@ _data = {
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
+process_mode = 3
 collision_layer = 5
 script = ExtResource("1_jy5lc")
 
@@ -204,6 +205,60 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "Coins :"
 
+[node name="Damage" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 248.0
+offset_top = -232.184
+offset_right = 440.0
+offset_bottom = -184.184
+grow_horizontal = 2
+
+[node name="Damage" type="RichTextLabel" parent="Upgrades/Damage"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Damage :"
+
+[node name="Regen" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 248.0
+offset_top = -184.184
+offset_right = 440.0
+offset_bottom = -136.184
+grow_horizontal = 2
+
+[node name="Regen" type="RichTextLabel" parent="Upgrades/Regen"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Regen /s :"
+
+[node name="MaxHealth" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 248.0
+offset_top = -136.184
+offset_right = 440.0
+offset_bottom = -88.184
+grow_horizontal = 2
+
+[node name="MaxHealth" type="RichTextLabel" parent="Upgrades/MaxHealth"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Max Health :"
+
 [node name="Coins2" type="MarginContainer" parent="Upgrades"]
 layout_mode = 1
 anchors_preset = -1
@@ -216,8 +271,99 @@ offset_top = 279.816
 offset_right = 144.0
 offset_bottom = 327.816
 grow_horizontal = 2
+scale = Vector2(2.4, 1)
 
 [node name="Coins" type="RichTextLabel" parent="Upgrades/Coins2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="Buy X1" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = -448.0
+offset_top = -168.184
+offset_right = -344.0
+offset_bottom = -120.184
+grow_horizontal = 2
+
+[node name="X1" type="Button" parent="Upgrades/Buy X1"]
+layout_mode = 2
+text = "X1
+"
+
+[node name="Buy X10" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = -336.0
+offset_top = -168.184
+offset_right = -232.0
+offset_bottom = -120.184
+grow_horizontal = 2
+
+[node name="X10" type="Button" parent="Upgrades/Buy X10"]
+layout_mode = 2
+text = "X10
+"
+
+[node name="Damage2" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 448.0
+offset_top = -232.184
+offset_right = 552.0
+offset_bottom = -184.184
+grow_horizontal = 2
+scale = Vector2(1.08, 1)
+
+[node name="Damage" type="RichTextLabel" parent="Upgrades/Damage2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="Regen2" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 448.0
+offset_top = -184.184
+offset_right = 552.0
+offset_bottom = -136.184
+grow_horizontal = 2
+scale = Vector2(1.12, 1)
+
+[node name="Regen" type="RichTextLabel" parent="Upgrades/Regen2"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="MaxHealth2" type="MarginContainer" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.383
+anchor_right = 0.5
+anchor_bottom = 0.383
+offset_left = 448.0
+offset_top = -136.184
+offset_right = 552.0
+offset_bottom = -88.184
+grow_horizontal = 2
+scale = Vector2(1.08, 1)
+
+[node name="MaxHealth" type="RichTextLabel" parent="Upgrades/MaxHealth2"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 
@@ -368,3 +514,5 @@ autoplay = true
 [connection signal="pressed" from="Upgrades/Body/VBoxContainer/Damage" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="Upgrades/Body/VBoxContainer/Regen" to="." method="_on_regen_pressed"]
 [connection signal="pressed" from="Upgrades/Body/VBoxContainer/Max_health" to="." method="_on_max_health_pressed"]
+[connection signal="pressed" from="Upgrades/Buy X1/X1" to="." method="_on_x_1_pressed"]
+[connection signal="pressed" from="Upgrades/Buy X10/X10" to="." method="_on_x_10_pressed"]
