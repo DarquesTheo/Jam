@@ -1,8 +1,10 @@
-[gd_scene load_steps=42 format=3 uid="uid://bl6wxsvnvh6e8"]
+[gd_scene load_steps=45 format=3 uid="uid://bl6wxsvnvh6e8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bqnmsmxd4kr7d" path="res://Weapon/better_ak.obj" id="1_6jgf7"]
 [ext_resource type="AudioStream" uid="uid://5qtciegapyt4" path="res://ak_sound/ak-47 - Marker #1.wav" id="1_pko32"]
 [ext_resource type="Texture2D" uid="uid://ctfdyb53qaax4" path="res://Weapon/ak_texture.png" id="2_y75o5"]
+[ext_resource type="ArrayMesh" uid="uid://j37ka5wflkep" path="res://Weapon/arm.obj" id="4_tpl2v"]
+[ext_resource type="Texture2D" uid="uid://cf0q15ptjflxx" path="res://Weapon/armcolor.png" id="5_ypd8e"]
 
 [sub_resource type="Animation" id="Animation_o66n6"]
 resource_name = "shoot_ak"
@@ -149,6 +151,9 @@ albedo_texture = ExtResource("2_y75o5")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apavv"]
 albedo_texture = ExtResource("2_y75o5")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qe85"]
+albedo_texture = ExtResource("5_ypd8e")
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069, -0.115, -0.396)
 
@@ -220,3 +225,16 @@ spot_angle_attenuation = 1.74
 [node name="shot_sound" type="AudioStreamPlayer" parent="."]
 pitch_scale = 0.9
 bus = &"shot"
+
+[node name="Arm" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.490517, -0.248167, 0.0175101, -0.248355, 0.490729, -0.00228326, -0.0145929, -0.00994311, -0.549716, -0.00612988, 0.0158317, 0.347029)
+layers = 7
+mesh = ExtResource("4_tpl2v")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qe85")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952752, 0.30375, 0, -0.30375, 0.952752, 0, 0.0790123, 0.481755)
+layers = 4
+light_color = Color(1, 0.72549, 0.301961, 1)
+spot_range = 0.6
+spot_angle = 8.0

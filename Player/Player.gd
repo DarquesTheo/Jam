@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var regen_text := $Upgrades/Regen2/Regen
 @onready var ui := $UI
 @onready var hp_bar:= $UI/Hp_bar
+@onready var arm := $Neck3/Camera3D/full_ak/Arm
 
 #GUN
 @onready var gun_anim = $Neck3/Camera3D/full_ak/AnimationPlayer
@@ -273,6 +274,7 @@ func _ready():
 
 func die():
 	alive = false
+	arm.visible = false
 	$Neck3/death_anim.play("die")
 	await get_tree().create_timer(3.8).timeout
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
