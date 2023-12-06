@@ -477,13 +477,54 @@ spot_angle = 21.7147
 transform = Transform3D(-1.42816e-08, 0.326724, 1.42816e-08, 0, -1.42816e-08, 0.326724, 0.326724, 1.42816e-08, 6.24267e-16, 194.286, 0.441675, 159.229)
 
 [node name="Cube_Material_001_0" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
-transform = Transform3D(-0.0472284, 0.998884, 4.36627e-08, -0.998884, -0.0472284, -4.57759e-08, -4.36627e-08, -4.57759e-08, 1, 0, 14.7761, 5.96046e-07)
+transform = Transform3D(-0.0472284, 0.998884, 4.36627e-08, -0.998884, -0.0472284, -4.57759e-08, -4.36627e-08, -4.57759e-08, 1, -7.513, 14.7761, 5.96046e-07)
 mesh = SubResource("ArrayMesh_4hsty")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -2.22045e-16, 3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_7hv8s")
+
+[node name="Cube_Material_001_2" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(-0.0472284, 0.998884, 4.36627e-08, -0.998884, -0.0472284, -4.57759e-08, -4.36627e-08, -4.57759e-08, 1, -50.7239, 14.7761, 5.96046e-07)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7hv8s")
+
+[node name="Cube_Material_001_4" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(-0.0472284, 0.998884, 4.36627e-08, -0.998884, -0.0472284, -4.57758e-08, -4.36627e-08, -4.57759e-08, 1, -95.7026, 14.7761, 5.96046e-07)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7hv8s")
+
+[node name="Cube_Material_001_5" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(0.0966448, -0.995319, -4.35069e-08, 0.995319, 0.0966448, -3.94871e-08, 4.3507e-08, -3.94869e-08, 1, -95.7026, -18.6823, -8.34465e-07)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7hv8s")
+
+[node name="Cube_Material_001_3" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(-0.106819, -0.994278, -4.34614e-08, 0.994278, -0.106819, -4.83808e-08, 4.34615e-08, -4.83807e-08, 1, -50.7239, -18.7916, -8.34465e-07)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp5/Cube_Material_001_3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7hv8s")
 
 [node name="Cube_Material_001_1" type="MeshInstance3D" parent="NavigationRegion3D/lamp5"]
@@ -497,7 +538,39 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_dfby5")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="NavigationRegion3D/lamp5"]
-transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -0.180603, 12.1651, 16.4904)
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -51.3009, -16.0393, 16.4904)
+layers = 3
+light_color = Color(1, 0.72549, 0.301961, 1)
+light_energy = 16.0
+spot_range = 7.90501
+spot_angle = 21.7147
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -95.2033, -16.0393, 16.4904)
+layers = 3
+light_color = Color(1, 0.72549, 0.301961, 1)
+light_energy = 16.0
+spot_range = 7.90501
+spot_angle = 21.7147
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -95.8399, 10.9673, 16.6968)
+layers = 3
+light_color = Color(1, 0.72549, 0.301961, 1)
+light_energy = 16.0
+spot_range = 7.90501
+spot_angle = 21.7147
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -50.9345, 11.9981, 16.4904)
+layers = 3
+light_color = Color(1, 0.72549, 0.301961, 1)
+light_energy = 16.0
+spot_range = 7.90501
+spot_angle = 21.7147
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="NavigationRegion3D/lamp5"]
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72241e-09, 0.206521, 9.33224e-09, 3.05371, -7.6041, 11.9981, 16.4904)
 layers = 3
 light_color = Color(1, 0.72549, 0.301961, 1)
 light_energy = 16.0
@@ -573,13 +646,36 @@ spot_angle = 21.7147
 transform = Transform3D(-1.42816e-08, -0.326724, -1.42816e-08, 0, -1.42816e-08, 0.326724, -0.326724, 1.42816e-08, 6.24267e-16, 193.971, 0.441675, 169.769)
 
 [node name="Cube_Material_001_0" type="MeshInstance3D" parent="NavigationRegion3D/lamp6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.780403, -1.27144e-07)
+transform = Transform3D(0.75169, -0.659516, -2.88285e-08, 0.659516, 0.75169, -1.0854e-08, 2.88285e-08, -1.0854e-08, 1, 0.1651, -15.7743, 0.47332)
 mesh = SubResource("ArrayMesh_4hsty")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_0/StaticBody3D"]
+transform = Transform3D(1, -3.55271e-15, 0, 3.55271e-15, 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_83hph")
+
+[node name="Cube_Material_001_1" type="MeshInstance3D" parent="NavigationRegion3D/lamp6"]
+transform = Transform3D(0.997593, -0.0693391, -3.0309e-09, 0.0693391, 0.997593, -1.05196e-10, 3.03092e-09, -1.05221e-10, 1, 0.1651, 24.0206, 0.473322)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_1/StaticBody3D"]
+transform = Transform3D(1, -3.55271e-15, 0, 3.55271e-15, 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_83hph")
+
+[node name="Cube_Material_001_3" type="MeshInstance3D" parent="NavigationRegion3D/lamp6"]
+transform = Transform3D(-0.999927, -0.0120246, -5.25631e-10, 0.0120246, -0.999927, -8.74199e-08, 5.25611e-10, -8.74198e-08, 1, 33.1766, 24.0206, 0.473322)
+mesh = SubResource("ArrayMesh_4hsty")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/lamp6/Cube_Material_001_3/StaticBody3D"]
+transform = Transform3D(1, -3.55271e-15, 0, 3.55271e-15, 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_83hph")
 
 [node name="Cube_Material_001_2" type="MeshInstance3D" parent="NavigationRegion3D/lamp6"]
@@ -593,7 +689,15 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_pt8wj")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="NavigationRegion3D/lamp6"]
-transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72242e-09, 0.206521, 9.33224e-09, 3.05371, 3.19211, -0.700714, 16.4904)
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72242e-09, 0.206521, 9.33224e-09, 3.05371, 3.19208, -13.7177, 16.4904)
+layers = 3
+light_color = Color(1, 0.72549, 0.301961, 1)
+light_energy = 16.0
+spot_range = 7.90501
+spot_angle = 21.7147
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="NavigationRegion3D/lamp6"]
+transform = Transform3D(3.05371, 8.72245e-09, -0.206521, -9.33227e-09, 3.06069, -8.72242e-09, 0.206521, 9.33224e-09, 3.05371, 30.2531, 24.2208, 16.4904)
 layers = 3
 light_color = Color(1, 0.72549, 0.301961, 1)
 light_energy = 16.0
